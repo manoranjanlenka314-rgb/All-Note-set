@@ -1,0 +1,79 @@
+What is C#?
+C# is an object-oriented, type-safe programming language developed by Microsoft for .NET. It is used to create web apps, desktop apps, mobile apps, and more. C# supports OOP principles, strong typing, garbage collection, exception handling, and modern features like LINQ, async/await, and generics.
+What are value types and reference types?
+Value types store actual data (e.g., int, float, bool), while reference types store references to data in memory (e.g., string, class, arrays). Value types live on the stack, reference types live on the heap. Modifying a reference type affects all references, unlike value types.
+What is a namespace in C#?
+A namespace is a container for classes, structs, interfaces, and enums. It helps organize code and avoid name conflicts. Example: System.Collections.Generic contains classes like List<T>. Namespaces can be nested and accessed using the using keyword.
+Explain C# data types.
+C# has value types (int, float, double, char, bool) and reference types (string, class, arrays, delegates). Value types are stored on the stack, reference types on the heap. Nullable types allow value types to hold null values using int?.
+What is a class in C#?
+A class is a blueprint for objects. It defines properties, methods, fields, constructors, and events. Objects are instances of classes. Classes support encapsulation, inheritance, and polymorphism, making code reusable and organized.
+What is an object in C#?
+An object is an instance of a class. It has state (fields/properties) and behavior (methods). Example: Car c = new Car(); creates a Car object. Objects are reference types stored in memory, and multiple objects can be created from the same class.
+What are access modifiers in C#?
+Access modifiers define the visibility of classes and members:
+public: accessible everywhere
+private: accessible only within class
+protected: accessible within class and derived class
+internal: accessible within same assembly
+protected internal: combination of protected and internal
+What is a constructor?
+A constructor initializes an object when created. It has the same name as the class, has no return type, and can be overloaded. Example:
+class Car { public Car() { /* initialization */ } }
+What is a method in C#?
+A method is a function defined in a class to perform actions. It can accept parameters and return values. Example:
+public int Add(int a, int b) { return a + b; }
+What is the difference between == and Equals()?
+== compares value for value types and reference for reference types. Equals() compares contents for reference types if overridden. For example, strings can be compared using == or Equals() because the method is overridden in string.
+11–20: OOP Concepts
+What is OOP in C#?
+Object-Oriented Programming organizes code using objects and classes. Core concepts:
+Encapsulation (hiding data)
+Inheritance (reusing classes)
+Polymorphism (many forms)
+Abstraction (hiding implementation details)
+What is encapsulation?
+Encapsulation hides the internal data of a class using private fields and exposes them via public properties or methods. It protects the object’s state and ensures controlled access.
+What is inheritance?
+Inheritance allows a class to acquire properties and methods of another class. Base class provides common functionality, Derived class extends it. Supports code reuse and hierarchy.
+What is polymorphism?
+Polymorphism allows an object to take many forms. Two types:
+Compile-time (method overloading)
+Runtime (method overriding using virtual and override keywords).
+What is abstraction?
+Abstraction hides implementation details and shows only essential features using abstract classes or interfaces. Example: a Vehicle abstract class defines Start() without implementation.
+Difference between abstract class and interface?
+Abstract classes can have fields, methods with implementation, and constructors. Interfaces only declare methods/properties without implementation. A class can inherit one abstract class but multiple interfaces.
+What is method overloading?
+Method overloading is defining multiple methods with the same name but different parameters. Example:
+void Print(int a) {}
+void Print(string b) {}
+What is method overriding?
+Method overriding allows a derived class to provide a specific implementation of a base class method using virtual and override keywords.
+What is sealed keyword?
+sealed prevents a class from being inherited. Example: sealed class Car { }. Sealed methods cannot be overridden further.
+What is this keyword?
+this refers to the current instance of a class. It’s used to access members, pass the current object, or differentiate between parameters and fields.
+21–30: Interfaces and Delegates
+What is an interface?
+An interface defines a contract of methods and properties without implementation. Classes implementing it must define all members. Supports multiple inheritance in C#.
+Can a class implement multiple interfaces?
+Yes, a class can implement multiple interfaces. Example:
+class Car : IDriveable, IFlyable {}
+What is a delegate?
+A delegate is a type-safe function pointer that references methods with a specific signature. Used for callbacks and event handling.
+What is a multicast delegate?
+A multicast delegate references multiple methods. Invoking it executes all methods in order. Created using += operator.
+What is an event in C#?
+An event is a message sent by an object to signal an action. Delegates are used as the event type. Example: public event EventHandler OnClick;.
+Difference between delegate and event?
+Delegates are function pointers that can be invoked directly. Events restrict delegate invocation to the declaring class, providing controlled access.
+What is Func delegate?
+Func is a predefined delegate that can return a value. Example: Func<int, int, int> add = (x, y) => x + y;.
+What is Action delegate?
+Action is a predefined delegate that does not return a value. Example: Action<string> print = s => Console.WriteLine(s);.
+What is Predicate delegate?
+Predicate<T> represents a method that returns a boolean based on a condition for a given object of type T.
+What is an anonymous method?
+An anonymous method is a delegate without a name using delegate keyword. Example:
+Func<int, int> square = delegate(int x) { return x * x; };
