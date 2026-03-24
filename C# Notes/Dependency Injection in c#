@@ -1,0 +1,74 @@
+🔹 What is Dependency in C#?
+Dependency means one class relies on another to perform its work.
+
+Example: A Car class depends on an Engine class to run.
+
+Problem: Tight coupling makes code harder to test, maintain, and extend.
+
+Solution: Dependency Injection (DI) — instead of creating dependencies inside a class, we "inject" them from outside.
+
+🔹 Types of Dependency Injection
+Constructor Injection
+
+Dependencies are passed via the constructor.
+
+csharp
+public class Car
+{
+    private readonly IEngine _engine;
+    public Car(IEngine engine)
+    {
+        _engine = engine;
+    }
+    public void Start() => _engine.Run();
+}
+Setter (Property) Injection
+
+Dependencies are set through properties.
+
+csharp
+public class Car
+{
+    public IEngine Engine { get; set; }
+    public void Start() => Engine.Run();
+}
+Method Injection
+
+Dependencies are passed directly into methods.
+
+csharp
+public class Car
+{
+    public void Start(IEngine engine) => engine.Run();
+}
+🔹 Syntax with Built-in DI (ASP.NET Core Example)
+csharp
+// Register services in Program.cs or Startup.cs
+services.AddTransient<IEngine, PetrolEngine>();
+services.AddScoped<ICar, Car>();
+
+// Resolve via constructor injection
+public class Driver
+{
+    private readonly ICar _car;
+    public Driver(ICar car)
+    {
+        _car = car;
+    }
+    public void Drive() => _car.Start();
+}
+🔹 Quick Interview Q&A
+Q1: What is dependency injection?  
+A: It’s a design pattern where dependencies are provided from outside rather than being created inside a class, reducing coupling and improving testability.
+
+Q2: Difference between tight coupling and loose coupling?  
+A: Tight coupling means classes are directly dependent on concrete implementations. Loose coupling means they depend on abstractions (interfaces), making code flexible.
+
+Q3: Which DI type is most common in C#?  
+A: Constructor Injection — because it ensures dependencies are available at object creation and supports immutability.
+
+Q4: What’s the role of IoC container?  
+A: Inversion of Control (IoC) container automatically manages object creation and dependency resolution, e.g., services.AddScoped<> in ASP.NET Core.
+
+Q5: Why is DI important for unit testing?  
+A: It allows injecting mock dependencies, so you can test classes in isolation without relying on real implementations.
