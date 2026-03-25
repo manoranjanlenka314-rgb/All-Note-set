@@ -1,0 +1,37 @@
+ASP.NET MVC is a framework from Microsoft that uses the Model-View-Controller (MVC) design pattern to build scalable, testable, and maintainable web applications. It separates application logic into three layers: Models (data/business logic), Views (UI), and Controllers (request handling), ensuring clean separation of concerns and easier testing. 
+
+🔹 Quick ASP.NET MVC Summary
+Model: Represents application data and business rules.
+
+View: Handles UI presentation (HTML, CSS, Razor).
+
+Controller: Manages user requests, interacts with Models, and selects Views.
+
+Routing: Maps URLs to controller actions.
+
+Advantages: Separation of concerns, testability, extensibility, and support for RESTful APIs.
+
+ASP.NET Core MVC: Cross-platform, open-source, cloud-optimized, and integrates with modern web standards. 
+
+📘 20 ASP.NET MVC Interview Questions & Answers
+#	Question	Answer
+1	What is ASP.NET MVC?	A framework for building web apps using the MVC pattern.
+2	Difference between MVC and WebForms?	MVC is lightweight, testable, and uses separation of concerns; WebForms uses event-driven model with ViewState.
+3	What are the main components of MVC?	Model, View, Controller.
+4	What is Routing in MVC?	Mechanism to map URLs to controller actions.
+5	What is Razor?	A view engine that allows embedding C# code in HTML.
+6	Difference between TempData, ViewData, and ViewBag?	TempData persists across redirects; ViewData is dictionary-based; ViewBag is dynamic wrapper around ViewData.
+7	What is ActionResult?	A base class for different result types returned by controllers (ViewResult, JsonResult, RedirectResult).
+8	What is Partial View?	A reusable view component rendered inside another view.
+9	What is Layout in MVC?	A master page that defines a common structure for multiple views.
+10	What is Dependency Injection in MVC?	A design pattern to inject dependencies into classes, improving testability.
+11	What is Model Binding?	Automatically maps HTTP request data to action method parameters.
+12	What is a Filter in MVC?	Attributes that run before/after controller actions (e.g., Authorize, HandleError).
+13	What is Bundling and Minification?	Techniques to optimize performance by reducing file size and requests.
+14	What is Scaffolding in MVC?	Auto-generation of CRUD code for models.
+15	Difference between Html.RenderPartial and Html.Partial?	RenderPartial writes directly to response; Partial returns HTML string.
+16	What is an Area in MVC?	A way to organize large applications into functional sections.
+17	What is the difference between synchronous and asynchronous controllers?	Async controllers free up threads for better scalability.
+18	What is ViewModel?	A class designed to pass data between controller and view.
+19	What is the difference between GET and POST in MVC?	GET retrieves data; POST submits data securely.
+20	How is security handled in MVC?	Using authentication, authorization filters, anti-forgery tokens, and secure cookie handling.
