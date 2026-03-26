@@ -1,0 +1,142 @@
+Long Summary: DbContext Class in Entity Framework
+Definition:
+DbContext is the primary class in Entity Framework (EF) that manages database connections and is responsible for querying and saving data. It acts as a bridge between your domain classes (entities) and the database.
+
+Responsibilities:
+
+Database Connection: Manages the connection to the database.
+
+Change Tracking: Keeps track of changes made to entities (Added, Modified, Deleted).
+
+Querying: Provides LINQ-to-Entities queries to fetch data.
+
+Saving: Persists changes back to the database using SaveChanges().
+
+Configuration: Allows overriding OnModelCreating for custom mappings and relationships.
+
+Structure:
+
+Inherits from System.Data.Entity.DbContext.
+
+Contains DbSet<TEntity> properties representing tables in the database.
+
+Example:
+
+csharp
+public class AppDbContext : DbContext
+{
+    public DbSet<Customer> Customers { get; set; }
+    public DbSet<Order> Orders { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Customer>()
+                    .HasMany(c => c.Orders)
+                    .WithOne(o => o.Customer);
+    }
+}
+Lifecycle:
+
+Create an instance → Perform queries/updates → Call SaveChanges() → Dispose.
+
+Best practice: Use Dependency Injection to manage DbContext lifetime.
+
+Key Features:
+
+Lazy Loading: Loads related entities only when accessed.
+
+Eager Loading: Loads related entities upfront using .Include().
+
+Explicit Loading: Manually load related entities.
+
+Transactions: Supports database transactions for atomic operations.
+
+Analogy:
+Think of DbContext as a middle manager in a company:
+
+Employees (Entities) report changes to the manager.
+
+The manager (DbContext) decides what needs to be sent to headquarters (Database).
+
+Headquarters updates records accordingly.
+
+🎯 20 Quick Interview Q&A (Interfaces, Repository, Entity, Mapping in ASP.NET MVC)
+Interfaces
+Q: What is an interface in C#?
+A: A contract that defines methods/properties without implementation. Classes implementing it must provide the logic.
+
+Q: Why use interfaces in ASP.NET MVC?
+A: To achieve loose coupling, dependency injection, and testability.
+
+Q: Can interfaces have fields?
+A: No, only methods, properties, events, and indexers.
+
+Q: How do interfaces help in unit testing repositories?
+A: They allow mocking repository behavior without hitting the database.
+
+Repository Pattern
+Q: What is the repository pattern?
+A: A design pattern that abstracts data access logic, providing a clean API for business logic.
+
+Q: Why use repository pattern in MVC?
+A: To separate concerns, improve testability, and centralize data access.
+
+Q: Example of a repository interface?
+
+csharp
+public interface ICustomerRepository
+{
+    IEnumerable<Customer> GetAll();
+    Customer GetById(int id);
+    void Add(Customer customer);
+    void Update(Customer customer);
+    void Delete(int id);
+}
+Q: How does repository interact with DbContext?
+A: Repository methods internally use DbContext to query and persist data.
+
+Q: Difference between repository and DbContext?
+A: DbContext is EF’s core class; repository is a custom abstraction layer built on top of DbContext.
+
+Entities
+Q: What is an entity in EF?
+A: A class that maps to a database table.
+
+Q: How do you define a primary key in an entity?
+A: By convention, EF uses Id or <ClassName>Id. Or explicitly with [Key] attribute.
+
+Q: Can entities have navigation properties?
+A: Yes, they represent relationships (e.g., Customer.Orders).
+
+Q: What is POCO in EF?
+A: Plain Old CLR Object – simple classes without EF dependencies.
+
+Q: How does EF track entity states?
+A: Using EntityState (Added, Modified, Deleted, Unchanged).
+
+Mapping
+Q: What is mapping in EF?
+A: The process of linking entity classes to database tables.
+
+Q: How do you configure mapping in EF Core?
+A: Using Fluent API inside OnModelCreating.
+
+Q: Difference between Data Annotations and Fluent API?
+A: Data Annotations are attributes on properties; Fluent API provides more control via code.
+
+Q: Example of Fluent API mapping?
+
+csharp
+modelBuilder.Entity<Customer>()
+    .Property(c => c.Name)
+    .HasMaxLength(100)
+    .IsRequired();
+Q: How do you configure one-to-many relationship?
+A:
+
+csharp
+modelBuilder.Entity<Customer>()
+    .HasMany(c => c.Orders)
+    .WithOne(o => o.Customer);
+Q: What is the role of OnModelCreating?
+A: It allows overriding default conventions and configuring custom mappings.
