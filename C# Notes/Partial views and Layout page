@@ -1,0 +1,95 @@
+Layout Page
+Purpose: Defines a consistent structure (header, footer, navigation) across multiple views.
+
+Analogy: Think of it like a master template in Word or PowerPoint—every page inherits the same design.
+
+Usage:
+
+Declared in _ViewStart.cshtml or directly in a view using Layout = "~/Views/Shared/_Layout.cshtml";
+
+Contains @RenderBody() → placeholder for the main content of each view.
+
+Can also have @RenderSection("scripts", required: false) for optional sections.
+
+Benefit: Avoids duplication, ensures consistent look and feel.
+
+Partial View
+Purpose: Reusable view component for rendering small chunks of UI (like widgets, forms, menus).
+
+Analogy: Like a Lego block you can plug into different pages.
+
+Usage:
+
+Created as .cshtml file, often stored in Views/Shared.
+
+Rendered using @Html.Partial("_MyPartial"), @Html.RenderPartial("_MyPartial"), or @Html.Action("ActionName").
+
+Benefit: Promotes modularity, reusability, and cleaner code.
+
+Key Difference
+Feature	Layout Page	Partial View
+Scope	Whole page template	Small reusable section
+Placeholder	@RenderBody() / @RenderSection()	Rendered via Html.Partial
+Purpose	Consistency across views	Reusability of components
+Analogy	Master template	Lego block
+
+⚡ 20 Quick Q&A Practice
+Q: What is a Layout Page in ASP.NET MVC?
+A: A master template that defines common structure (header, footer, nav) for multiple views.
+
+Q: Which file often sets the layout for all views?
+A: _ViewStart.cshtml.
+
+Q: What placeholder is used in Layout Page for main content?
+A: @RenderBody().
+
+Q: How do you define optional sections in Layout Page?
+A: Using @RenderSection("name", required: false).
+
+Q: What is a Partial View?
+A: A reusable view component for rendering small sections of UI.
+
+Q: How do you render a partial view in Razor?
+A: @Html.Partial("_PartialName").
+
+Q: Difference between Html.Partial and Html.RenderPartial?
+A: Html.Partial returns MvcHtmlString; Html.RenderPartial writes directly to response (faster).
+
+Q: Can a partial view have its own layout?
+A: No, partial views don’t use layouts.
+
+Q: Where are layout pages usually stored?
+A: Views/Shared folder.
+
+Q: Where are partial views usually stored?
+A: Views/Shared or inside specific controller folders.
+
+Q: What is the benefit of using Layout Pages?
+A: Consistency and reduced duplication across views.
+
+Q: What is the benefit of using Partial Views?
+A: Reusability and modular design.
+
+Q: Can you nest partial views inside other partial views?
+A: Yes, partial views can be nested.
+
+Q: Which directive sets layout in a view?
+A: Layout = "~/Views/Shared/_Layout.cshtml";.
+
+Q: Which method allows rendering a partial view via controller action?
+A: @Html.Action("ActionName").
+
+Q: What happens if you don’t specify a layout?
+A: The view renders standalone without shared structure.
+
+Q: Can layout pages contain scripts and styles?
+A: Yes, typically in <head> and @RenderSection("scripts").
+
+Q: What is _ViewImports.cshtml used for?
+A: To import namespaces and tag helpers globally.
+
+Q: Can partial views accept a model?
+A: Yes, they can be strongly typed.
+
+Q: One-line difference between Layout and Partial View?
+A: Layout = whole page template; Partial = reusable component.
