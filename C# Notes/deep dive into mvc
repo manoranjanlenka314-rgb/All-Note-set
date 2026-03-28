@@ -1,0 +1,93 @@
+ASP.NET Core MVC is a cross-platform, open-source framework for building modern, cloud-ready, and scalable web applications. It follows the Model-View-Controller (MVC) design pattern, which separates concerns:
+
+Model → Represents application data and business logic.
+
+View → Handles UI and presentation.
+
+Controller → Manages user requests, interacts with the model, and returns responses.
+
+Key features:
+
+Built on .NET Core, making it lightweight and modular.
+
+Supports dependency injection out of the box.
+
+Provides middleware pipeline for request handling.
+
+Enables RESTful APIs and Razor Pages.
+
+Strong focus on security, performance, and testability.
+
+📝 20 ASP.NET Core MVC Interview Q&A (Company-Level)
+Basics
+Q: What is ASP.NET Core MVC?
+A: A framework for building web apps using the MVC pattern, running cross-platform on .NET Core.
+
+Q: Difference between ASP.NET MVC and ASP.NET Core MVC?
+A: Core MVC is cross-platform, modular, faster, and supports dependency injection natively.
+
+Q: What is Middleware in ASP.NET Core?
+A: Components in the request pipeline that handle requests/responses (e.g., authentication, logging).
+
+Q: Explain the MVC pattern.
+A: Model (data), View (UI), Controller (logic) → separation of concerns.
+
+Controllers & Routing
+Q: How does routing work in ASP.NET Core MVC?
+A: Uses endpoint routing defined in Program.cs or Startup.cs with MapControllerRoute.
+
+Q: What are Action Methods?
+A: Public methods in controllers that handle incoming requests and return responses.
+
+Q: Difference between IActionResult and ActionResult<T>?
+A: IActionResult is non-generic, while ActionResult<T> provides type safety for responses.
+
+Models & Data
+Q: What is Entity Framework Core?
+A: ORM for database access, supporting LINQ queries and migrations.
+
+Q: How do you implement validation in MVC Core?
+A: Using Data Annotations ([Required], [StringLength]) or Fluent Validation.
+
+Q: What is ViewModel?
+A: A class that shapes data specifically for the view, separate from domain models.
+
+Views & Razor
+Q: What is Razor?
+A: A templating engine that combines C# with HTML for dynamic views.
+
+Q: Difference between Partial View and Layout?
+A: Layout defines a common structure (like master page), Partial View is reusable UI snippet.
+
+Q: What are Tag Helpers?
+A: Server-side components that generate HTML dynamically (e.g., <form asp-action="Login">).
+
+Dependency Injection & Services
+Q: How is Dependency Injection implemented in ASP.NET Core?
+A: Using built-in DI container with AddScoped, AddTransient, AddSingleton.
+
+Q: Difference between Scoped, Transient, and Singleton?
+A:
+
+Scoped → per request
+
+Transient → new instance every time
+
+Singleton → single instance for app lifetime
+
+Security & Authentication
+Q: How do you implement Authentication in ASP.NET Core?
+A: Using Identity, JWT tokens, or external providers (Google, Facebook).
+
+Q: What is CSRF protection in MVC Core?
+A: Anti-forgery tokens (@Html.AntiForgeryToken()) prevent cross-site request forgery.
+
+Advanced Topics
+Q: What is Middleware vs Filters?
+A: Middleware works at pipeline level, Filters work at MVC action level (e.g., AuthorizeFilter).
+
+Q: How do you implement Logging in ASP.NET Core?
+A: Using built-in ILogger<T> with providers like Console, Debug, or Serilog.
+
+Q: How do you improve performance in ASP.NET Core MVC apps?
+A: Caching, async programming, minimizing middleware, using CDN, and optimizing EF Core queries.
